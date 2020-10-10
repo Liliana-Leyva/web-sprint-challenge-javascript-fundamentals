@@ -17,36 +17,60 @@ const zooAnimals = [
 
 /* Request 1: .forEach()
 
-The zoos want to display both the scientific name and the animal name in front of the habitats. Populate the displayNames array with only the animal_name and scientific_name of each animal. displayNames will be an array of strings, and each string should follow this pattern: "Name: Jackal, asiatic, Scientific: Canis aureus."
+The zoos want to display both the scientific name and the animal name in front of the habitats. 
+Populate the displayNames array with only the animal_name and scientific_name 
+of each animal. displayNames will be an array of strings, and each string should follow this pattern:
+ "Name: Jackal, asiatic, Scientific: Canis aureus."
 
 */
 const displayNames = [];
-console.log(displayNames);
+zooAnimals.forEach(function(i){
+return displayNames.push(`Name:  ${i.animal_name}, Scientific: ${i.scientific_name}`
+)}),
+console.log("Request 1: ", displayNames);
+
+
 
 /* Request 2: .map()
 
-The zoos need a list of all their animal's names (animal_name only) converted to lower case. Using map, create a new array of strings named lowCaseAnimalNames, each string following this pattern: "jackal, asiatic". Log the resut.
-
+The zoos need a list of all their animal's names (animal_name only) converted to lower case. 
+Using map, create a new array of strings named lowCaseAnimalNames, 
+each string following this pattern: "jackal, asiatic". Log the resut.
 */
 
-const lowCaseAnimalNames
-console.log(lowCaseAnimalNames);
+const lowCaseAnimalNames = zooAnimals.map(function(i){
+  return (`Name: ${i.animal_name.toLowerCase()}`)});
+
+
+console.log("Request 2: ",lowCaseAnimalNames);
 
 /* Request 3: .filter() 
 
-The zoos are concerned about animals with a lower population count. Using filter, create a new array of objects called lowPopulationAnimals which contains only the animals with a population less than 5.
+The zoos are concerned about animals with a lower population count. Using filter,
+ create a new array of objects called lowPopulationAnimals which contains only the animals 
+ with a population less than 5.
 
 */
-const lowPopulationAnimals
-console.log(lowPopulationAnimals);
+
+
+const lowPopulationAnimals = zooAnimals.filter((i)=>{
+  return i.population<5;
+});
+console.log("Request 3: ", lowPopulationAnimals);
 
 /* Request 4: .reduce() 
 
-The zoos need to know their total animal population across the United States. Find the total population from all the zoos using the .reduce() method. Remember the reduce method takes two arguments: a callback (which itself takes two args), and an initial value for the count.
+The zoos need to know their total animal population across the United States.
+ Find the total population from all the zoos using the .reduce() method. Remember the 
+ reduce method takes two arguments: a callback (which itself takes two args), and an
+  initial value for the count.
 
 */
-let populationTotal = 0;
-console.log(populationTotal);
+ let populationTotal = zooAnimals.reduce((total, i)=>{
+   return total += i.population;
+ },0)
+ console.log("Request 4: ")
+ console.log("Total Population: ",populationTotal);
 
 
 // ==== Callbacks ====  
@@ -58,25 +82,64 @@ console.log(populationTotal);
   * The consume function should return the invocation of cb, passing a and b into cb as arguments
 */
 
+function consume(a,b,cb){
+  return cb(a,b);
+}
+
 
 /* Step 2: Create several functions to callback with consume();
   * Create a function named add that returns the sum of two numbers
   * Create a function named multiply that returns the product of two numbers 
-  * Create a function named greeting that accepts a first and last name and returns "Hello first-name last-name, nice to meet you!"
+  * Create a function named greeting that accepts a first and last name and returns "Hello 
+  * first-name last-name, nice to meet you!"
 */
+
+function add(a,b){
+  return a+b;
+}
+
+function multiply(a,b){
+  return a*b;
+}
+
+function greeting(a,b){
+  return (`Hello ${a}${b}, nice to meet you!`);
+}
 
 
 /* Step 3: Check your work by un-commenting the following calls to consume(): */
-// console.log(consume(2, 2, add)); // 4
+// console.log("consume(2, 2, add)); // 4
 // console.log(consume(10, 16, multiply)); // 160
 // console.log(consume("Mary", "Poppins", greeting)); // Hello Mary Poppins, nice to meet you!
-
-
-
+console.log("");
+console.log("Callbacks");
+console.log("Sum: ",consume(2,2,add));
+console.log("Multiplication: ",consume(10,16, multiply));
+console.log("Greeting: ",consume("Mary", "Poppins", greeting));
 
 /*
+
 
 Stretch: If you haven't already, convert your array method callbacks into arrow functions.
 
 */
+console.log("");
+console.log("Stretch: ");
+const lowCaseAnimalNamesArrow= zooAnimals.map((i)=>{
+  return (`Name: ${i.animal_name.toLowerCase()}`)});
+
+console.log("Arrow function: ",lowCaseAnimalNamesArrow)
+
+
+const displayNamesArrow = zooAnimals.forEach((i)=>{
+return (`Name:  ${i.animal_name}, Scientific: ${i.scientific_name}`
+)});
+console.log("Arrow function: ", displayNamesArrow);
+
+
+// let populationTotal = zooAnimals.reduce((total, i)=>{
+//   return total += i.population;
+// },0)
+// console.log("Request 4: ")
+// console.log("Total Population: ",populationTotal);
 
