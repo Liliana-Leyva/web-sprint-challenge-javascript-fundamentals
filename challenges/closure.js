@@ -18,7 +18,7 @@ function myFunction() {
 myFunction();
 
 // Explanation: 
-//Because nestedFunction is created inside myFunction and it has local ScopedCredential.
+//Because nestedFunction is created inside myFunction and it has local scope.
 
 /* Task 2: Counter */
 

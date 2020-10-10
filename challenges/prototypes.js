@@ -50,7 +50,7 @@ cuboid = new CuboidMaker(4,5,5);
 // Test your volume and surfaceArea methods by uncommenting the logs below:
 // console.log(cuboid.volume()); // 100
 // console.log(cuboid.surfaceArea()); // 130
-console.log("The coboid is: ", cuboid.volume());
-console.log("The suface is: ", cuboid.surface());
+console.log("The volume of the cuboid is: ", cuboid.volume());
+console.log("The suface of the cuboid is: ", cuboid.surface());
 
 
