@@ -38,9 +38,8 @@ Using map, create a new array of strings named lowCaseAnimalNames,
 each string following this pattern: "jackal, asiatic". Log the resut.
 */
 
-const lowCaseAnimalNames = [];
-const nameToLower= zooAnimals.map(function(i){
-  return lowCaseAnimalNames.push(`Name: ${i.animal_name.toLowerCase()}`)});
+const lowCaseAnimalNames = zooAnimals.map(function(i){
+  return (`Name: ${i.animal_name.toLowerCase()}`)});
 
 
 console.log("Request 2: ",lowCaseAnimalNames);
@@ -83,6 +82,10 @@ The zoos need to know their total animal population across the United States.
   * The consume function should return the invocation of cb, passing a and b into cb as arguments
 */
 
+function consume(a,b,cb){
+  return cb(a,b);
+}
+
 
 /* Step 2: Create several functions to callback with consume();
   * Create a function named add that returns the sum of two numbers
@@ -91,18 +94,52 @@ The zoos need to know their total animal population across the United States.
   * first-name last-name, nice to meet you!"
 */
 
+function add(a,b){
+  return a+b;
+}
+
+function multiply(a,b){
+  return a*b;
+}
+
+function greeting(a,b){
+  return (`Hello ${a}${b}, nice to meet you!`);
+}
+
 
 /* Step 3: Check your work by un-commenting the following calls to consume(): */
-// console.log(consume(2, 2, add)); // 4
+// console.log("consume(2, 2, add)); // 4
 // console.log(consume(10, 16, multiply)); // 160
 // console.log(consume("Mary", "Poppins", greeting)); // Hello Mary Poppins, nice to meet you!
-
-
-
+console.log("");
+console.log("Callbacks");
+console.log("Sum: ",consume(2,2,add));
+console.log("Multiplication: ",consume(10,16, multiply));
+console.log("Greeting: ",consume("Mary", "Poppins", greeting));
 
 /*
+
 
 Stretch: If you haven't already, convert your array method callbacks into arrow functions.
 
 */
+console.log("");
+console.log("Stretch: ");
+const lowCaseAnimalNamesArrow= zooAnimals.map((i)=>{
+  return (`Name: ${i.animal_name.toLowerCase()}`)});
+
+console.log("Arrow function: ",lowCaseAnimalNamesArrow)
+
+
+const displayNamesArrow = zooAnimals.forEach((i)=>{
+return (`Name:  ${i.animal_name}, Scientific: ${i.scientific_name}`
+)});
+console.log("Arrow function: ", displayNamesArrow);
+
+
+// let populationTotal = zooAnimals.reduce((total, i)=>{
+//   return total += i.population;
+// },0)
+// console.log("Request 4: ")
+// console.log("Total Population: ",populationTotal);
 
